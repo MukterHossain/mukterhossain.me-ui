@@ -9,3 +9,24 @@ export interface IBlog {
     published: boolean;
  
 }
+export interface IProject {
+    id: string;
+    title: string
+    description?: string;
+    features: string[];
+    liveUrl?: string;
+    repoUrl?: string;
+    thumbnail?: string;
+    published: boolean;
+    ownerId:string,
+    owner?: IProjectOwner;
+    createdAt?: string;
+    updatedAt?: string; 
+}
+export interface IProjectOwner {
+    name: string;
+    email: string
+    image?:string
+ 
+}
+
