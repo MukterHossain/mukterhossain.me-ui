@@ -4,7 +4,7 @@ import React from 'react';
 
 const ManageBlog = () => {
     return (
-        <div>
+        <div className=''>
             <h1>Manage Blog</h1>
             <Link href={'/dashboard/create-blog'}><Button >Create Blog</Button></Link>
             

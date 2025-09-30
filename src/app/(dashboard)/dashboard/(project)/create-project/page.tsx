@@ -3,7 +3,7 @@ import React from 'react';
 
 const CreateProject = () => {
     return (
-        <div>
+        <div className='w-full'>
             <h1>Create</h1>
             <CreateProjectForm></CreateProjectForm>
         </div>

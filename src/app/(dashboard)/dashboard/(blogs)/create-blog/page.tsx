@@ -3,8 +3,8 @@ import React from 'react';
 
 const CreateBlog = () => {
     return (
-        <div className='w-full'>
-            <h1>Create Blog</h1>
+        <div className='w-full mx-auto p-10'>
+            
             <CreateBlogForm></CreateBlogForm>
         </div>
     );

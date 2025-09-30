@@ -3,17 +3,16 @@
 
 import Form from "next/form";
 
-import { useState } from "react";
 
 export default function CreateProjectForm() {
-  const [isFeatured, setIsFeatured] = useState("false");
+
 
   return (
     <Form
       action="/api/blogs"
       className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg space-y-4 w-full"
     >
-      <h2 className="text-xl font-semibold mb-4">Create Blog</h2>
+      <h2 className="text-xl font-semibold mb-4">Create Project</h2>
 
       {/* Title */}
       <div>
@@ -28,15 +27,28 @@ export default function CreateProjectForm() {
         />
       </div>
 
-      {/* Content */}
+      {/* slug */}
       <div>
         <label className="block text-sm font-medium mb-1" htmlFor="content">
-          Content
+          Slug
         </label>
-        <textarea
-          id="content"
-          name="content"
-          rows={4}
+        <input
+        type="text"
+          id="slug"
+          name="slug"
+          className="w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200"
+        />
+      </div>
+
+      {/* features */}
+      <div>
+        <label className="block text-sm font-medium mb-1" htmlFor="content">
+          Features
+        </label>
+        <input
+        type="text"
+          id="features"
+          name="features"
           className="w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200"
         />
       </div>
@@ -54,47 +66,44 @@ export default function CreateProjectForm() {
         />
       </div>
 
-      {/* Tags */}
+      {/* liveUrl */}
       <div>
-        <label className="block text-sm font-medium mb-1" htmlFor="tags">
-          Tags (comma separated)
+        <label className="block text-sm font-medium mb-1" htmlFor="thumbnail">
+          Live URL
         </label>
         <input
-          type="text"
-          id="tags"
-          name="tags"
-          placeholder="Next.js, React, Web Development"
+          type="url"
+          id="liveUrl"
+          name="liveUrl"
           className="w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200"
         />
       </div>
 
-      {/* Featured */}
+      {/* liveUrl */}
       <div>
-        <p className="block text-sm font-medium mb-1">Featured</p>
-        <div className="flex gap-6">
-          <label className="flex items-center gap-2">
-            <input
-              type="radio"
-              name="isFeatured"
-              value="true"
-              checked={isFeatured === "true"}
-              onChange={(e) => setIsFeatured(e.target.value)}
-              className="text-blue-600 focus:ring-blue-500"
-            />
-            Yes
-          </label>
-          <label className="flex items-center gap-2">
-            <input
-              type="radio"
-              name="isFeatured"
-              value="false"
-              checked={isFeatured === "false"}
-              onChange={(e) => setIsFeatured(e.target.value)}
-              className="text-blue-600 focus:ring-blue-500"
-            />
-            No
-          </label>
-        </div>
+        <label className="block text-sm font-medium mb-1" htmlFor="thumbnail">
+          Repository URL
+        </label>
+        <input
+          type="url"
+          id="repoUrl"
+          name="repoUrl"
+          className="w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200"
+        />
+      </div>
+
+
+        {/* Content */}
+      <div>
+        <label className="block text-sm font-medium mb-1" htmlFor="content">
+          Description
+        </label>
+        <textarea
+          id="description"
+          name="description"
+          rows={4}
+          className="w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200"
+        />
       </div>
 
       <button

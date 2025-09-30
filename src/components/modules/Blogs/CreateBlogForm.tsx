@@ -2,10 +2,10 @@
 
 import Form from "next/form";
 
-import { useState } from "react";
+
 
 export default function CreateBlogForm() {
-  const [isFeatured, setIsFeatured] = useState("false");
+
 
   return (
     <Form
@@ -27,15 +27,28 @@ export default function CreateBlogForm() {
         />
       </div>
 
-      {/* Content */}
+      {/* slug */}
       <div>
         <label className="block text-sm font-medium mb-1" htmlFor="content">
-          Content
+          Slug
         </label>
-        <textarea
-          id="content"
-          name="content"
-          rows={4}
+        <input
+        type="text"
+          id="slug"
+          name="slug"
+          className="w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200"
+        />
+      </div>
+
+      {/* excerpt */}
+      <div>
+        <label className="block text-sm font-medium mb-1" htmlFor="content">
+          Excerpt
+        </label>
+        <input
+        type="text"
+          id="excerpt"
+          name="excerpt"
           className="w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200"
         />
       </div>
@@ -52,48 +65,17 @@ export default function CreateBlogForm() {
           className="w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200"
         />
       </div>
-
-      {/* Tags */}
+        {/* Content */}
       <div>
-        <label className="block text-sm font-medium mb-1" htmlFor="tags">
-          Tags (comma separated)
+        <label className="block text-sm font-medium mb-1" htmlFor="content">
+          Content
         </label>
-        <input
-          type="text"
-          id="tags"
-          name="tags"
-          placeholder="Next.js, React, Web Development"
+        <textarea
+          id="content"
+          name="content"
+          rows={4}
           className="w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200"
         />
-      </div>
-
-      {/* Featured */}
-      <div>
-        <p className="block text-sm font-medium mb-1">Featured</p>
-        <div className="flex gap-6">
-          <label className="flex items-center gap-2">
-            <input
-              type="radio"
-              name="isFeatured"
-              value="true"
-              checked={isFeatured === "true"}
-              onChange={(e) => setIsFeatured(e.target.value)}
-              className="text-blue-600 focus:ring-blue-500"
-            />
-            Yes
-          </label>
-          <label className="flex items-center gap-2">
-            <input
-              type="radio"
-              name="isFeatured"
-              value="false"
-              checked={isFeatured === "false"}
-              onChange={(e) => setIsFeatured(e.target.value)}
-              className="text-blue-600 focus:ring-blue-500"
-            />
-            No
-          </label>
-        </div>
       </div>
 
       <button
