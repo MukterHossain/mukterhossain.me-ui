@@ -14,8 +14,10 @@ import {
 } from "@/components/ui/form";
 import toast from "react-hot-toast";
 import { login } from "@/actions/auth";
+import { useRouter } from "next/navigation";
+
+
 // import { signIn } from "next-auth/react";
-// import { login } from "@/actions/auth";
 // import { toast } from "sonner";
 
 // type LoginFormValues = {
@@ -24,26 +26,28 @@ import { login } from "@/actions/auth";
 // };
 
 export default function LoginForm() {
+  const router = useRouter()
   const form = useForm<FieldValues>({
     defaultValues: {
       email: "",
       password: "",
     },
   });
+  
+  
 
   const onSubmit = async (values: FieldValues) => {
     try {
       const res = await login(values);
-      if (res?.id) {
+      if (res?.success || res?.user?.id) {
         toast.success("User Logged in Successfully");
+        
       } else {
-        toast.error("User Login Failed");
+        toast.error(res?.message ||"User Login Failed");
       }
-      // signIn("credentials", {
-      //   ...values,
-      //   callbackUrl: "/dashboard",
-      // });
-      console.log("values", values);
+     
+      
+      router.push("/dashboard");
     } catch (err) {
       console.error(err);
     }

@@ -10,9 +10,11 @@ export const login = async (data: FieldValues) => {
     },
     body: JSON.stringify(data),
   });
+  const result = await res.json()
   console.log("res login", res)
   if (!res?.ok) {
-    console.error("Login Failed", await res.text());
+    // console.error("Login Failed", await res.text());
+    throw new Error(result?.message || "Login Failed")
   }
-  return await res.json();
+  return result
 };
