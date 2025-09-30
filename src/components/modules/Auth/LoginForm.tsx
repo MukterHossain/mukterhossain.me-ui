@@ -12,6 +12,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import toast from "react-hot-toast";
+import { login } from "@/actions/auth";
 // import { signIn } from "next-auth/react";
 // import { login } from "@/actions/auth";
 // import { toast } from "sonner";
@@ -31,12 +33,12 @@ export default function LoginForm() {
 
   const onSubmit = async (values: FieldValues) => {
     try {
-      // const res = await login(values);
-      // if (res?.id) {
-      //   toast.success("User Logged in Successfully");
-      // } else {
-      //   toast.error("User Login Failed");
-      // }
+      const res = await login(values);
+      if (res?.id) {
+        toast.success("User Logged in Successfully");
+      } else {
+        toast.error("User Login Failed");
+      }
       // signIn("credentials", {
       //   ...values,
       //   callbackUrl: "/dashboard",

@@ -3,9 +3,11 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Home, PlusCircle, LogOut, LayoutDashboard } from "lucide-react";
+import { useState } from "react";
 // import { signOut, useSession } from "next-auth/react";
 
 export default function Sidebar() {
+  const [isOpen, setIsOpen] = useState(false)
   // const session = useSession()
   // console.log(session)
   return (
@@ -23,7 +25,7 @@ export default function Sidebar() {
 
         <Link
           href="/dashboard"
-          className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-gray-100 hover:text-black"
+          className="flex items-center gap-2 rounded-lg px-2 py-1 text-sm font-medium hover:bg-gray-100 hover:text-black"
         >
           <LayoutDashboard className="h-4 w-4" />
           Dashboard
@@ -35,9 +37,16 @@ export default function Sidebar() {
           <PlusCircle className="h-4 w-4" />
           Create Blog
         </Link>
+        <Link
+          href="/dashboard/create-blog"
+          className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-gray-100 hover:text-black"
+        >
+          <PlusCircle className="h-4 w-4" />
+          Manage Project
+        </Link>
       </nav>
 
-      Bottom action
+      {/* Bottom action */}
       <div className="p-4 border-t border-gray-500">
         {/* {session.status === "authenticated" && <Button
           variant="destructive"
