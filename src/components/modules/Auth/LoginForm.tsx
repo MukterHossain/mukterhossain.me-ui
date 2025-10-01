@@ -13,8 +13,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import toast from "react-hot-toast";
-import { login } from "@/actions/auth";
-import { useRouter } from "next/navigation";
+// import { login } from "@/actions/auth";
+// import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 
 // import { signIn } from "next-auth/react";
@@ -26,7 +27,7 @@ import { useRouter } from "next/navigation";
 // };
 
 export default function LoginForm() {
-  const router = useRouter()
+  // const router = useRouter()
   const form = useForm<FieldValues>({
     defaultValues: {
       email: "",
@@ -38,16 +39,26 @@ export default function LoginForm() {
 
   const onSubmit = async (values: FieldValues) => {
     try {
-      const res = await login(values);
-      if (res?.success || res?.user?.id) {
-        toast.success("User Logged in Successfully");
+      // const res = await login(values);
+      // if (res?.success || res?.user?.id) {
+      //   toast.success("User Logged in Successfully");
         
-      } else {
-        toast.error(res?.message ||"User Login Failed");
-      }
+      // } else {
+      //   toast.error(res?.message ||"User Login Failed");
+      // }
+      const res =await signIn("Credentials", {
+        ...values, 
+        redirect: true,
+        // callbackUrl:"/dashboard"
+      });
      
-      
-      router.push("/dashboard");
+      console.log("🔎 signIn response:", res);
+      if(!res?.ok){
+        toast.success("User Logged in Successfully");
+      }else{
+        toast.error("Invalid eamil or password")
+      }
+      // router.push("/dashboard");
     } catch (err) {
       console.error(err);
     }
@@ -63,7 +74,7 @@ export default function LoginForm() {
             onSubmit={form.handleSubmit(onSubmit)}
             className="space-y-6 w-full max-w-md"
           >
-            <h2 className="text-3xl font-bold text-center">Login</h2>
+            <h2 className="text-3xl font-bold text-center">Login Only for Owner</h2>
 
             {/* Email */}
             <FormField

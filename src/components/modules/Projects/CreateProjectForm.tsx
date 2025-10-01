@@ -1,6 +1,7 @@
 
 "use client";
 
+import { createProject } from "@/actions/create";
 import Form from "next/form";
 
 
@@ -9,7 +10,7 @@ export default function CreateProjectForm() {
 
   return (
     <Form
-      action="/api/blogs"
+      action={createProject}
       className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg space-y-4 w-full"
     >
       <h2 className="text-xl font-semibold mb-4">Create Project</h2>
@@ -27,18 +28,6 @@ export default function CreateProjectForm() {
         />
       </div>
 
-      {/* slug */}
-      <div>
-        <label className="block text-sm font-medium mb-1" htmlFor="content">
-          Slug
-        </label>
-        <input
-        type="text"
-          id="slug"
-          name="slug"
-          className="w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200"
-        />
-      </div>
 
       {/* features */}
       <div>
@@ -49,6 +38,7 @@ export default function CreateProjectForm() {
         type="text"
           id="features"
           name="features"
+          placeholder="e.g. React, TailwindCSS, Next.js, TypeScript"
           className="w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200"
         />
       </div>

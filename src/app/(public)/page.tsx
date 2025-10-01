@@ -11,8 +11,8 @@ export default async function HomePage() {
   })
   const data = await res.json()
   //     console.log("data", data)
-  console.log("data", data.result
-    .blogs)
+  // console.log("data", data.result
+  //   .blogs)
   const blogs = data?.result?.blogs
   return (
     <div>

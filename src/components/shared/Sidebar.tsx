@@ -4,12 +4,12 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Home, PlusCircle, LogOut, LayoutDashboard } from "lucide-react";
 import { useState } from "react";
-// import { signOut, useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false)
-  // const session = useSession()
-  // console.log(session)
+  const session = useSession()
+  console.log(session)
   return (
     <aside className="flex h-screen w-64 flex-col border-r bg-black text-white">
       {/* Top navigation */}
@@ -48,15 +48,14 @@ export default function Sidebar() {
 
       {/* Bottom action */}
       <div className="p-4 border-t border-gray-500">
-        {/* {session.status === "authenticated" && <Button
+        {session.status === "authenticated" && <Button
           variant="destructive"
           className="w-full justify-start gap-2 cursor-pointer"
           onClick={() => signOut()}
         >
           <LogOut className="h-4 w-4" />
           Logout
-        </Button>} */}
-        <Button>Log Out</Button>
+        </Button>}
       </div>
     </aside>
   );
