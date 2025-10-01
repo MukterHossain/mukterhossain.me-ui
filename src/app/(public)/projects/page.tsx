@@ -1,6 +1,12 @@
 import ProjectCard from '@/components/modules/Projects/ProjectCard';
 import { IProject } from '@/types';
+import { Metadata } from 'next';
 
+
+export const metadata:Metadata ={
+    title: "All Projects | Portfolio",
+    description: "Browser all projects post on web development, Next.js, React, Typescript, and more. Stay updated with the latest tutorials and articles.",
+}
 
 const ProjectsPage = async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project`)
