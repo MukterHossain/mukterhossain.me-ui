@@ -1,3 +1,4 @@
+import BlogTable from '@/components/modules/Blogs/BlogTable';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import React from 'react';
@@ -10,6 +11,7 @@ const ManageBlog = () => {
             
             <div>
                 <h1>Table</h1>
+                <BlogTable></BlogTable>
             </div>
         </div>
     );
