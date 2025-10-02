@@ -7,7 +7,7 @@ const AboutPage =async () => {
   const data = await res.json()
   console.log("data", data?.user)
     return (
-        <div>
+        <div className="max-w-7xl mx-auto p-5">
             <h1>About</h1>
             <p>{data?.user?.name}</p>
             <p>{data?.user?.email}</p>

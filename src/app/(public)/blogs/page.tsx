@@ -17,9 +17,9 @@ const BlogsPage =async () => {
 .blogs)
 const blogs = data?.result?.blogs
     return (
-        <div>
+        <div className="max-w-7xl mx-auto">
            <h1>All Blogs</h1>
-           <div className="grid grid-cols-3 gap-5 max-w-6xl mx-auto">
+           <div className="grid grid-cols-3 gap-5">
             {
                 blogs?.map((blog:IBlog) => (
                     <BlogCard key={blog?.id} post={blog}></BlogCard>

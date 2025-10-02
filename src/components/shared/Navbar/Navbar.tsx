@@ -26,7 +26,7 @@ const navigationLinks = [
 
 export default function Component() {
   return (
-    <header className="border-b px-4 md:px-6">
+    <header className="border-b px-4 md:px-6 max-w-7xl mx-auto">
       <div className="flex h-16 items-center justify-between gap-4">
         {/* Left side */}
         <div className="flex items-center gap-2">

@@ -21,7 +21,7 @@ const BlogDetails =async ({params}: {params:Promise<{blogId:string}>}) => {
     // console.log("data", data)
     
     return (
-        <div>
+        <div className="max-w-7xl mx-auto p-5">
             <h1>Blog Details</h1>
             <div>
                 <BlogDetailsCard key={blog?.id} blog={blog}></BlogDetailsCard>

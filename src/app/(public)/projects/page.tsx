@@ -14,9 +14,9 @@ const ProjectsPage = async () => {
     console.log("data", data.data.projects)
     const projects = data.data.projects
     return (
-        <div>
+        <div className='max-w-7xl mx-auto p-5'>
             <h1>Projects</h1>
-            <div className="grid grid-cols-3 gap-5 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 gap-5">
                 {
                     projects?.map((project: IProject) => (
                         <ProjectCard key={project?.id} project={project}></ProjectCard>

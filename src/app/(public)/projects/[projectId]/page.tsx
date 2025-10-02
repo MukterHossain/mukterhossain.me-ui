@@ -20,7 +20,7 @@ const ProjectDetails = async ({params}: {params:Promise<{projectId:string}>}) =>
     const project = data?.data?.project
     console.log("data", project)
     return (
-        <div>
+        <div className='max-w-7xl mx-auto p-5'>
             <h1>Project Details</h1>
             <div>
                 <ProjectDetailsCard key={project?.id} project={project}></ProjectDetailsCard>
