@@ -4,10 +4,13 @@ import React from 'react';
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
     
     return (
-        <div>
-            <main className="min-h-dvh flex gap-4">
+        <div className='overflow-x-hidden relative'>
+            <main className="min-h-screen flex overflow-hidden">
                 <Sidebar />
-                {children}
+                <div className='flex-1 overflow-y-auto px-10'>
+                  {children}  
+                </div>
+                
             </main>
         </div>
     );

@@ -16,28 +16,28 @@ import DeleteBlogConfirmation from "./DeleteBlogConfirmation"
 
 
 export default async function BlogTable() {
-       const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog`,{
-        cache: "no-store",
-     })
-    const data  = await res.json()
-//     console.log("data", data)
-    console.log("data", data.result
-.blogs)
-const blogs = data?.result?.blogs
-console.log("blogs", blogs)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog`, {
+    cache: "no-store",
+  })
+  const data = await res.json()
+  //     console.log("data", data)
+  console.log("data", data.result
+    .blogs)
+  const blogs = data?.result?.blogs
+  console.log("blogs", blogs)
   return (
-    <div>
-      <Table>
+    <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg  w-full overflow-x-hidden">
+      <Table className="w-full table-auto overflow-x-hidden">
         <TableHeader>
           <TableRow className="hover:bg-transparent">
             <TableHead>Name</TableHead>
             <TableHead>Title</TableHead>
             <TableHead>Slug</TableHead>
-            <TableHead className="text-right">Action</TableHead>
+            <TableHead className="text-center">Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {blogs?.map((item:IBlog) => (
+          {blogs?.map((item: IBlog) => (
             <TableRow key={item.id}>
               <TableCell>
                 <div className="flex items-center gap-3">
@@ -61,15 +61,10 @@ console.log("blogs", blogs)
               <TableCell className="text-right">
                 <div className="flex gap-2">
                   <Link href={`/dashboard/edit-blog/${item?.id}`}>
-                  <Button>Edit</Button></Link>
+                    <Button>Edit</Button></Link>
                   <DeleteBlogConfirmation blogId={item?.id} deleteAction={deleteBlog}>
-          <Button variant={"destructive"}>Delete</Button>
+                    <Button variant={"destructive"}>Delete</Button>
                   </DeleteBlogConfirmation>
-                  {/* <form action={deleteBlog}>
-                    <input type="hidden" name="id" value={item?.id}  className="w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200" />
-                    
-                  </form> */}
-                
                 </div>
               </TableCell>
             </TableRow>

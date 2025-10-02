@@ -2,16 +2,26 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Home, PlusCircle, LogOut, LayoutDashboard } from "lucide-react";
+import { Home, PlusCircle, LogOut, LayoutDashboard, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { signOut, useSession } from "next-auth/react";
+import clsx from "clsx";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false)
   const session = useSession()
   console.log(session)
   return (
-    <aside className="flex h-screen w-64 flex-col border-r bg-black text-white">
+    <>
+    <button onClick={()=>setIsOpen(!isOpen)} className="absolute top-4 right-4 z-50 md:hidden bg-gray-200 text-gray-900 p-2 rounded-md">
+    <Menu className="h-5 w-5"></Menu>
+    </button>
+    
+    <aside className={clsx("fixed md:static  top-0 left-0 h-screen w-64 bg-black text-white transform flex flex-col border-r  z-40 transition-transform duration-300 ease-in-out", isOpen ? "md:translate-x-0" : "-translate-x-full", "md:translate-x-0")}>
+      {/*  */}
+      <button onClick={()=>setIsOpen(false)} className="absolute top-4 right-4 z-50 md:hidden bg-black text-white p-2 rounded-md">
+    <X className="h-5 w-5"></X>
+    </button>
       {/* Top navigation */}
       <nav className="flex-1 space-y-2 p-4">
         <Link
@@ -58,5 +68,7 @@ export default function Sidebar() {
         </Button>}
       </div>
     </aside>
+    </>
+    
   );
 }

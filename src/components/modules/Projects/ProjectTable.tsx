@@ -23,8 +23,8 @@ export default async function ProjectTable() {
 const projects = data?.data?.projects
 console.log("projects", projects)
   return (
-    <div>
-      <Table>
+    <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg  w-full overflow-x-hidden">
+      <Table className="w-full table-auto overflow-x-hidden">
         <TableHeader>
           <TableRow className="hover:bg-transparent">
             <TableHead>Name</TableHead>
