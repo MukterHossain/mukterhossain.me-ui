@@ -10,6 +10,8 @@ import {
 import { IBlog } from "@/types"
 import Image from "next/image"
 import Link from "next/link"
+import DeleteProjectConfirmed from "./DeleteProjectConfirmed"
+import { deleteProject } from "@/actions/create"
 
 
 
@@ -58,16 +60,15 @@ console.log("projects", projects)
               <TableCell className="text-right">
                 <div className="flex gap-2">
                   <Link href={`/dashboard/edit-project/${item?.id}`}><Button>Edit</Button></Link>
-                <Button>Delete</Button>
+                <DeleteProjectConfirmed projectId={item?.id} deleteAction={deleteProject}>
+                    <Button variant={"destructive"}>Delete</Button>
+                  </DeleteProjectConfirmed>
                 </div>
               </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
-      <p className="text-muted-foreground mt-4 text-center text-sm">
-        Table with images
-      </p>
     </div>
   )
 }
