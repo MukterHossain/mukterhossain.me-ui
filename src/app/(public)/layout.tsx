@@ -5,7 +5,7 @@ const PublicLayout = ({children}:{children: React.ReactNode}) => {
     return (
         <div>
             <Navbar></Navbar>
-            <main className='w-full min-h-dvh ' >{children}</main>
+            <main className='w-full min-h-dvh' >{children}</main>
             <Footer></Footer>
         </div>
     );
