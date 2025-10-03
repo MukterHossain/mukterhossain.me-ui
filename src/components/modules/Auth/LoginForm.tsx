@@ -13,21 +13,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import toast from "react-hot-toast";
-// import { login } from "@/actions/auth";
-// import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 
 
-// import { signIn } from "next-auth/react";
-// import { toast } from "sonner";
-
-// type LoginFormValues = {
-//   email: string;
-//   password: string;
-// };
-
 export default function LoginForm() {
-  // const router = useRouter()
   const form = useForm<FieldValues>({
     defaultValues: {
       email: "",
@@ -39,26 +28,17 @@ export default function LoginForm() {
 
   const onSubmit = async (values: FieldValues) => {
     try {
-      // const res = await login(values);
-      // if (res?.success || res?.user?.id) {
-      //   toast.success("User Logged in Successfully");
-        
-      // } else {
-      //   toast.error(res?.message ||"User Login Failed");
-      // }
-      const res =await signIn("Credentials", {
+
+      const res =await signIn("credentials", {
         ...values, 
         redirect: true,
-        // callbackUrl:"/dashboard"
+        callbackUrl:"/dashboard"
       });
-     
-      console.log("🔎 signIn response:", res);
-      if(!res?.ok){
+      if(res?.ok){
         toast.success("User Logged in Successfully");
       }else{
         toast.error("Invalid eamil or password")
       }
-      // router.push("/dashboard");
     } catch (err) {
       console.error(err);
     }

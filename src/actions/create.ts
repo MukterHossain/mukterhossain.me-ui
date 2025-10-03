@@ -1,15 +1,16 @@
 'use server'
 
+import { getUserSession } from "@/helpers/getUserSession"
 import { revalidatePath, revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
 
 export const createBlog = async(data:FormData) =>{
-    console.log("data", data)
+    const session =await getUserSession()
     const blogInfo = Object.fromEntries(data.entries())
     console.log("blogInfo", blogInfo)
     const modifiedData = {
         ...blogInfo,
-        ownerId: '70550982-8a52-40e9-9532-0a13fc1f8f13'
+        ownerId: session?.user?.id,
     }
     console.log("modifiedData", modifiedData)
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog`,{
@@ -30,14 +31,13 @@ export const createBlog = async(data:FormData) =>{
     return result
 }
 export const updateBlog = async(data:FormData) =>{
-    console.log("data", data)
+    const session =await getUserSession()
     const blogInfo = Object.fromEntries(data.entries())
-    console.log("blogInfo", blogInfo)
     const {id, ...rest} = blogInfo
     const cleanData =Object.fromEntries(Object.entries(rest).filter(([key]) => !key.startsWith("$ACTION_ID")))
     const modifiedData = {
         ...cleanData,
-        ownerId: '70550982-8a52-40e9-9532-0a13fc1f8f13'
+        ownerId: session?.user?.id,
     }
     console.log("modifiedData", modifiedData)
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog/${id}`,{
@@ -72,13 +72,13 @@ export const deleteBlog = async(formData:FormData) =>{
 
 
 export const createProject = async(data:FormData) =>{
-    console.log("data", data)
+    const session =await getUserSession()
     const projectInfo = Object.fromEntries(data.entries())
     console.log("projectInfo", projectInfo)
     const modifiedData = {
         ...projectInfo,
         features: projectInfo.features.toString().split(',').map((feature) => feature.trim()),
-        ownerId: '70550982-8a52-40e9-9532-0a13fc1f8f13'
+        ownerId: session?.user?.id,
     }
     console.log("modifiedData", modifiedData)
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project`,{
@@ -94,11 +94,12 @@ export const createProject = async(data:FormData) =>{
     if(result?.data?.id){
         // revalidateTag('BLOGS')
         // revalidatePath('/blogs')
-        // redirect('/dashboard/manage-blog')
+        redirect('/dashboard/manage-project')
     }
     return result
 }
 export const updateProject = async(data:FormData) =>{
+    const session =await getUserSession()
      const projectInfo = Object.fromEntries(data.entries())
     console.log("blogInfo", projectInfo)
     const {id, ...rest} = projectInfo
@@ -106,7 +107,7 @@ export const updateProject = async(data:FormData) =>{
     const modifiedData = {
         ...cleanData,
         features: projectInfo.features.toString().split(',').map((feature) => feature.trim()),
-        ownerId: '70550982-8a52-40e9-9532-0a13fc1f8f13'
+        ownerId: session?.user?.id,
     }
     console.log("modifiedData", modifiedData)
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project/${id}`,{

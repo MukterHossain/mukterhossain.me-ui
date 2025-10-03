@@ -1,5 +1,4 @@
-
-// import UserMenu from "@/components/user-menu"
+'use client'
 import { Button } from "@/components/ui/button"
 import {
   NavigationMenu,
@@ -14,6 +13,8 @@ import {
 } from "@/components/ui/popover"
 import Link from "next/link"
 import UserMenu from "./UserMenu"
+import { signOut, useSession } from "next-auth/react"
+import { LogOut } from "lucide-react"
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
@@ -24,7 +25,10 @@ const navigationLinks = [
   { href: "/projects", label: "Projects" },
 ]
 
-export default function Component() {
+export default  function Navbar() {
+
+  const session = useSession()
+  
   return (
     <div className="w-full  top-0   fixed inset-x-0 h-16  bg-background border-b shadow-sm   z-30">
       <header className="h-16 max-w-7xl mx-auto px-4 md:px-6 ">
@@ -62,10 +66,16 @@ export default function Component() {
               </NavigationMenuList>
             </NavigationMenu>
             <div>
-              <Link href="/login">
-              <Button>Login</Button>
-              </Link>
-              <Button>Log Out</Button>
+              {session?.status === "authenticated"  ? (<Button
+          variant="destructive"
+          className="w-full justify-start gap-1 cursor-pointer"
+          onClick={() => signOut()}
+        >
+          <LogOut className="h-4 w-4" />
+          Logout
+        </Button> ): (<Link href="/login">
+              <Button variant={"outline"} className=" cursor-pointer">Login</Button>
+              </Link>)}
             </div>
           </div>
 
