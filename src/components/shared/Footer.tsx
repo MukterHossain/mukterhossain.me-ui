@@ -4,10 +4,10 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative max-w-7xl mx-auto overflow-hidden pt-12 pb-10 ">
+    <footer className="relative max-w-7xl mx-auto  overflow-hidden  pt-12 pb-10 ">
       {/* Background Layer */}
       <div
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 rounded-t-2xl mx-5 "
         style={{
           background:
             "radial-gradient(125% 125% at 50% 60%, #000000 40%, #010133 100%)",

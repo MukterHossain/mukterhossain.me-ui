@@ -2,10 +2,10 @@ import Link from "next/link";
 
 export default async function Hero() {
   return (
-    <div>
+    <div className="mt-10 ">
       <div className="max-h-screen w-full relative">
         <div
-          className="absolute inset-0 z-0"
+          className="absolute inset-0 z-0 rounded-b-2xl"
           style={{
             background:
               "radial-gradient(125% 125% at 50% 100%, #000000 40%, #2b0707 100%)",
