@@ -1,16 +1,24 @@
 "use client";
 
 import { createBlog } from "@/actions/create";
+import RichTextEditor from "@/components/Editor/RichTextEditor";
 import Form from "next/form";
+import { useState } from "react";
 
 
 
 export default function CreateBlogForm() {
+  const [content,setContent] = useState("")
+  // action={async(formData:FormData) =>{
+  //       formData.append("content", content);
+  //      await createBlog(formData)}}
 
 
   return (
     <Form
-      action={createBlog}
+      action={async(formData:FormData) =>{
+        formData.append("content", content);
+       await createBlog(formData)}}
       className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg space-y-4 w-full"
     >
       <h2 className="text-xl font-semibold mb-4">Create Blog</h2>
@@ -71,13 +79,25 @@ export default function CreateBlogForm() {
         <label className="block text-sm font-medium mb-1" htmlFor="content">
           Content
         </label>
+        <RichTextEditor value={content}
+            onChange={setContent}          
+//  id="content"
+          // name="content"
+          // rows={4}
+          // className="w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200"
+        />
+      </div>
+      {/* <div>
+        <label className="block text-sm font-medium mb-1" htmlFor="content">
+          Content
+        </label>
         <textarea
           id="content"
           name="content"
           rows={4}
           className="w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200"
         />
-      </div>
+      </div> */}
 
       <button
         type="submit"

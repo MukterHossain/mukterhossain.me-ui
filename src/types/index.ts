@@ -7,6 +7,10 @@ export interface IBlog {
     content: string;
     thumbnail: string;
     published: boolean;
+    ownerId:string,
+    owner?: IProjectOwner;
+    createdAt?: string;
+    updatedAt?: string;
  
 }
 export interface IProject {

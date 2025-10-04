@@ -1,7 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { IBlog } from "@/types";
 import Image from "next/image";
 
-export default async function BlogDetailsCard({ blog }: { blog: any }) {
+export default async function BlogDetailsCard({ blog }: { blog: IBlog }) {
 
   console.log("Blog in BlogDetailsCard:", blog);
   if (!blog) {
@@ -34,10 +35,12 @@ export default async function BlogDetailsCard({ blog }: { blog: any }) {
         <h3 className="text-xl font-bold  group-hover:text-blue-600 transition-colors">
           {blog?.title}
         </h3>
-
-        <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
+        <div className="text-gray-500 dark:text-gray-400 text-sm mb-4 prose">
+          <div dangerouslySetInnerHTML={{ __html: blog?.content }}/>
+        </div>
+        {/* <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
           {blog?.content}
-        </p>
+        </p> */}
         <hr />
         <div className="mt-4 space-y-1">
           <p className="text-gray-700 dark:text-gray-300  line-clamp-3">

@@ -3,7 +3,6 @@ import {
   Link2,
   Mail,
   MapPin,
-  Phone,
 } from "lucide-react"
 
 import {
@@ -50,7 +49,7 @@ export default function UserMenu() {
 
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="max-w-lg trasition-all duration-300 ease-in-out transform origin-top scale-95 opacity-0 "
+        className="max-w-lg p-4 trasition-all duration-300 ease-in-out transform origin-top scale-95 opacity-0 "
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
         align="end" style={{ transform: open ? "scale(1" : "scale(0.95", opacity: open ? 1 : 0, transition: "all 0.3s ease-in-out" }}>
@@ -70,8 +69,7 @@ export default function UserMenu() {
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex flex-col gap-y-1 ">
                 <p className="text-sm flex items-center gap-x-1"><Mail size={16}></Mail> <span>{user?.email}</span></p>
-                <p className="text-sm flex items-center gap-x-1"><Phone size={16}></Phone> <span>{user?.phone}</span></p>
-
+      
                 <p className="text-sm">Role: {user?.role?.toUpperCase()}</p>
                 <p className="text-sm">Start Date: {user?.updatedAt?.slice(0, 10)}</p>
               </div>

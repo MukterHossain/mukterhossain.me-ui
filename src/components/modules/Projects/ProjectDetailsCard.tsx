@@ -1,8 +1,11 @@
 import { IProject } from "@/types";
 import { ExternalLink } from "lucide-react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa";
-
+const projectCard = dynamic(() => import("@/components/modules/Projects/ProjectCard"),{
+    loading: () => <p>Loading...</p>,
+})
 
 const ProjectDetailsCard = ({ project }: { project: IProject }) => {
     return (
@@ -15,6 +18,7 @@ const ProjectDetailsCard = ({ project }: { project: IProject }) => {
                         alt={`${project?.title ? project?.title : "No Picture found"}`}
                         fill
                         sizes="full"
+                        loading="lazy"
                         priority={false}
                         className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />

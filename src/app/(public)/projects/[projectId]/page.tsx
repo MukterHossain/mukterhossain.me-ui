@@ -12,6 +12,7 @@ const {projectId} =await params
         description: project?.description
     }
 }
+
 const ProjectDetails = async ({params}: {params:Promise<{projectId:string}>}) => {
     const {projectId} =await params
     
