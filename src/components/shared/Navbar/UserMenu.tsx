@@ -1,13 +1,9 @@
 "use client"
 import {
-  ExternalLink,
   Link2,
-  LocateIcon,
-  LogOutIcon,
   Mail,
   MapPin,
   Phone,
-  PinIcon,
 } from "lucide-react"
 
 import {
@@ -39,15 +35,13 @@ export default function UserMenu() {
     return <Loading></Loading>
   }
 
-  console.log("UserMenu session:", session);
-
   const user = session?.user
   return (
     <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}>
-        <Button variant="ghost" className="h-auto p-0 bg-transparent">
+        <Button variant="ghost" className="h-auto rounded-full p-0 bg-transparent">
           <Avatar>
             <AvatarImage src={user?.image ? user?.image : "https://i.ibb.co.com/3zj13YK/Mukter-Hossain1.jpg"} alt="Profile image" />
             <AvatarFallback>Profile Image</AvatarFallback>

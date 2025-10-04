@@ -1,57 +1,72 @@
+import { getUserSession } from "@/helpers/getUserSession";
+import {  Mail } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import Link from "next/link";
 
 const AboutPage = async () => {
-    const email = "mukterhossain3075@gmail.com"
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/auth/owner/${email}`, {
-        cache: "no-store",
-    })
-    const data = await res.json()
-    const user = data?.user;
+    const session = await getUserSession()
+    const user = session?.user;
+
+    console.log(session);
     return (
-        <div className="max-w-7xl mx-auto p-5 my-16 px-5">
-            <div className="text-center mb-10">
-                <h1 className="text-2xl sm:text-4xl font-bold mb-3">About me</h1>
+        <div className="max-w-7xl mx-auto py-20 space-y-12 px-5">
+            <section className="text-center mb-10  p-5 rounded-lg">
+                <h1 className="text-3xl sm:text-5xl font-bold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent "> I’m {user?.name}</h1>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                    I’m <span className="font-medium">{user?.name}</span>, a passionate{" "}
-                    <span className="text-primary">Web Developer</span> focused on bilding modern, scalable, and user-friendly web applications.
+                    <span className="font-medium"></span> a passionate{" "}
+                    <span className="text-primary">Frontend Developer</span> with a strong focus on building respoonsive, modern, scalable, and user-friendly web applications.
                 </p>
-            </div>
-            {/* Personal Information */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="">
+            </section>
+            <section className="bg-muted/20 shadow p-6 rounded-xl">
+                <h1 className="text-2xl sm:text-3xl font-bold mb-3">🎓My Background</h1>
+                <p className="text-lg text-muted-foreground">
+                    I completed my <span className="font-medium">Honors and Master’s in Polititical Science </span> from Dhaka College. Although my academic background is different, my deep interest in technology led me into the world of web development, where I’ve been continuously learning and improving my skills.
+                </p>
+            </section>
+            {/* Personal Information and Skills */}
+            <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="bg-muted/20 shadow p-5 rounded-xl space-y-3">
                     <h2 className="text-2xl font-semibold mb-3">Personal Information</h2>
                     <ul className="text-muted-foreground space-y-2">
-                        <li><strong>Name: </strong>{user?.name}</li>
-                        <li><strong>Email: </strong>{user?.email}</li>
-                        <li><strong>Location: </strong>Dhaka, Bangladesh</li>
-                        <li><strong>Available: </strong>Yes, open for freelance & remote jobs</li>
+                        <li className="flex items-center gap-2"><Mail className="w-5 h-5 text-primary"></Mail>{user?.email}
+                        </li>
+                        <li className="flex items-center gap-2"><FaLinkedin className="w-5 h-5 text-blue-600"></FaLinkedin>
+                            <Link target="_blank" href={`https://www.linkedin.com/in/md-mukter-hossain-341358295`} className="text-sm flex items-center gap-x-1 text-blue-500">Linkedin.com/in/mukter</Link>
+                        </li>
+                        
+                        <li className="flex items-center gap-2"><FaGithub className="w-5 h-5 text-blue-600"></FaGithub>
+                            <Link target="_blank" href={`https://github.com/MukterHossain`} className="text-sm flex items-center gap-x-1 text-blue-500">GitHub.com/MukterHossain</Link>
+                        </li>
                     </ul>
                 </div>
-                <div className="">
+                {/* Skills */}
+                <div className="bg-muted/20 shadow p-6 rounded-xl space-y-3">
                     <h2 className="text-2xl font-semibold mb-3">My Skills</h2>
-                    <div className="flex flex-wrap gap-2 ">
-                        {["JavaScript", "TypeScript", "React", "Next.js", "Node.js", "Express", "MongoDB", "HTML5", "CSS3", "Tailwind CSS", "Git", "GitHub"].map((skill) => (
-                            <span key={skill} className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">
-                                {skill}
-                            </span>
-                        ))}
-                    </div>
+                    <ul className="list-disc list-inside space-y-2 ">
+                        <li className="font-semibold">
+                            <span className="font-bold"> Frontedn: </span>HTML5, CSS3, Tailwind CSS, JavaScript (ES6+), TypeScript, React.js, Next.js  </li>
+                        <li className="font-semibold">
+                            <span className="font-bold">Backend: </span>Node.js, Express.js, Prisma, MongoDB, PostgreSQL  </li>
+                        <li className="font-semibold">
+                            <span className="font-bold">Tools: </span>Git, GitHub, Redux Toolkit  </li>
+                    </ul>
                 </div>
-            </div>
-            {/* My Story */}
-            <div className="mt-10">
+            </section>  
+            {/* My journey */}
+            <section className="bg-muted/20 rounded-xl p-6 space-y-3 shadow">
                 <h1 className="text-2xl  font-semibold mb-3">My Journey</h1>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                    I started my web development journey about 2 years ago, driven by a strong curiosity for how the web works. Over tiime, I mastered fronted technologies like React, Next.js, and later expended my skills to backend development using Node.js and Express. My ultimate goal is to become a full-stack developer who can design, build, and deploy complete web solution from scratch.
+                    I’m passionate about continous learning, problem-solving, and collaborating with teams to build impactful digital projucts. My goal is to join a dynamic team where I can contribute to meaningful projects and grow as a developer.
                 </p>
-            </div>
+            </section>
             {/* CTA */}
-            <div className="text-center bg-primary/5 py-10 rounded-lg mt-10">
+            <section className="text-center bg-primary/10 p-10 rounded-xl shadow space-y-4">
                 <h2 className="text-2xl  font-semibold mb-3">🚀 Let’s Work Together</h2>
                 <p className=" text-muted-foreground mb-4">
                     I’m always excited to collaborate on interesting projects. Feel free to reach out.
                 </p>
                 <a href="mailto:mukterhossain3075@gmail.com" className="inline-block bg-primary text-white px-6 py-2 rounded-md hover:bg-primary/90 transition duration-300">Contact Me</a>
-            </div>
+            </section>
 
         </div>
     );

@@ -37,7 +37,6 @@ export default  function Navbar() {
         <div className="flex items-center gap-2">
 
           {/* User menu */}
-          {/* <UserMenu /> */}
           <UserMenu></UserMenu>
           <div className="flex flex-col ">
             <h1 className="font-semibold text-[15px] -mb-1  sm:text-lg ">Md Mukter Hossain</h1>
