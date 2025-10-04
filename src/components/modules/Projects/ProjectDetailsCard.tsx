@@ -1,12 +1,14 @@
 import { IProject } from "@/types";
+import { ExternalLink } from "lucide-react";
 import Image from "next/image";
+import { FaGithub } from "react-icons/fa";
 
 
-const ProjectDetailsCard = ({project}: {project:IProject}) => {
+const ProjectDetailsCard = ({ project }: { project: IProject }) => {
     return (
-        <div className="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+        <div className="bg-white max-w-5xl mx-auto dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 mt-12">
             {project?.thumbnail ? (
-                <div className="relative h-56 w-full overflow-hidden">
+                <div className="relative h-56 sm:h-70 md:h-80 w-full overflow-hidden">
                     <Image
                         src={project?.thumbnail}
 
@@ -31,16 +33,22 @@ const ProjectDetailsCard = ({project}: {project:IProject}) => {
                 <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
                     {project?.description}
                 </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
-                    {project?.liveUrl}
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
-                    {project?.repoUrl
-                    }
-                </p>
+                <div className=" gap-4 my-4">
+                    <h1 className="font-bold text-lg">Features:</h1>
+                    <ul className="list-disc ml-5 list-inside space-y-1 text-gray-700 dark:text-gray-300">
+                        {project?.features?.map((fea, i) =>(
+                            <li key={i}>{fea}</li>
+                        ))}
+                    </ul>
+                </div>
+
+                <div className="flex gap-4 my-4">
+                    <a href={project?.liveUrl ? project?.liveUrl : "Not Found"} className="flex items-center gap-1 text-blue-600 hover:underline" target="_blank"> <ExternalLink size={18}></ExternalLink>Live Site</a>
+                    <a href={project?.repoUrl ? project?.repoUrl : "Not Found"} className="flex items-center gap-1 text-blue-600 hover:underline" target="_blank"> <FaGithub size={18}></FaGithub>Github Repo</a>
+                </div>
 
 
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-end mb-4">
                     <div className="flex items-center gap-2">
                         <Image
                             src={
@@ -52,20 +60,17 @@ const ProjectDetailsCard = ({project}: {project:IProject}) => {
                             height={36}
                             className="rounded-full border-2 border-gray-200 dark:border-gray-700"
                         />
-                        <span className="text-gray-600 dark:text-gray-300 text-sm flex items-center gap-1">
-                            {project?.owner?.name}
+                        <div className="flex flex-col">
+                            <span className="text-gray-600 dark:text-gray-300 text-sm flex items-center gap-1">
+                                {project?.owner?.name}
 
-                        </span>
+                            </span>
+                            <span className="text-gray-500 dark:text-gray-400 text-sm">
+                                {project?.owner?.email}
+                            </span>
+                        </div>
                     </div>
-                    <span className="text-gray-500 dark:text-gray-400 text-sm">
-                        {project?.owner?.email} views
-                    </span>
-                </div>
 
-                <div className="text-right">
-                    <span className="text-blue-600 dark:text-blue-400 font-semibold text-sm hover:underline">
-                        Read More →
-                    </span>
                 </div>
             </div>
         </div>

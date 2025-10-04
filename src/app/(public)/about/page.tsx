@@ -1,17 +1,20 @@
-import { getUserSession } from "@/helpers/getUserSession";
 import {  Mail } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Link from "next/link";
+import { Metadata } from "next";
 
+export const metadata:Metadata ={
+    title: "About Me | Portfolio",
+    description: "Learn more about Mukter Hossain, a passionate Frontend Developer specializing in building responsive and user-friendly web applications. Discover his background, skills, and journey in web development.",
+}
 const AboutPage = async () => {
-    const session = await getUserSession()
-    const user = session?.user;
+    
 
-    console.log(session);
+    // console.log(session);
     return (
         <div className="max-w-7xl mx-auto py-20 space-y-12 px-5">
             <section className="text-center mb-10  p-5 rounded-lg">
-                <h1 className="text-3xl sm:text-5xl font-bold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent "> I’m {user?.name}</h1>
+                <h1 className="text-3xl sm:text-5xl font-bold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent "> I’m MD MUKTER HOSSAIN</h1>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                     <span className="font-medium"></span> a passionate{" "}
                     <span className="text-primary">Frontend Developer</span> with a strong focus on building respoonsive, modern, scalable, and user-friendly web applications.
@@ -28,7 +31,7 @@ const AboutPage = async () => {
                 <div className="bg-muted/20 shadow p-5 rounded-xl space-y-3">
                     <h2 className="text-2xl font-semibold mb-3">Personal Information</h2>
                     <ul className="text-muted-foreground space-y-2">
-                        <li className="flex items-center gap-2"><Mail className="w-5 h-5 text-primary"></Mail>{user?.email}
+                        <li className="flex items-center gap-2"><Mail className="w-5 h-5 text-primary"></Mail>mukterhossain3075@gmail.com
                         </li>
                         <li className="flex items-center gap-2"><FaLinkedin className="w-5 h-5 text-blue-600"></FaLinkedin>
                             <Link target="_blank" href={`https://www.linkedin.com/in/md-mukter-hossain-341358295`} className="text-sm flex items-center gap-x-1 text-blue-500">Linkedin.com/in/mukter</Link>

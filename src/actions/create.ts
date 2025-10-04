@@ -52,6 +52,8 @@ export const updateBlog = async(data:FormData) =>{
     const result = await res.json()
     console.log("result", result)
     if(result?.data?.id){
+        revalidateTag('BLOGS')
+        revalidatePath('/blogs')
         redirect('/dashboard/manage-blog')
     }
     return result
@@ -92,8 +94,8 @@ export const createProject = async(data:FormData) =>{
     const result = await res.json()
     console.log("result", result)
     if(result?.data?.id){
-        // revalidateTag('BLOGS')
-        // revalidatePath('/blogs')
+        revalidateTag('PROJECTS')
+        revalidatePath('/projects')
         redirect('/dashboard/manage-project')
     }
     return result
@@ -121,6 +123,8 @@ export const updateProject = async(data:FormData) =>{
     const result = await res.json()
     console.log("result", result)
     if(result?.data?.id){
+        revalidateTag('PROJECTS')
+        revalidatePath('/projects')
         redirect('/dashboard/manage-project')
     }
     return result

@@ -34,7 +34,7 @@ const ProjectCard = ({project}:{project:IProject}) => {
           </h3>
 
           <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
-            {project?.description}
+            {project?.description?.slice(0, 50)}
           </p>
           
 
@@ -55,9 +55,6 @@ const ProjectCard = ({project}:{project:IProject}) => {
                 
               </span>
             </div>
-            <span className="text-gray-500 dark:text-gray-400 text-sm">
-              {project?.owner?.email} views
-            </span>
           </div>
 
           <div className="text-right">

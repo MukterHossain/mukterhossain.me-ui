@@ -2,7 +2,12 @@ import BlogCard from "@/components/modules/Blogs/BlogCard"
 import Hero from "@/components/modules/Home/Hero"
 import ProjectCard from "@/components/modules/Projects/ProjectCard"
 import { IBlog, IProject } from "@/types"
+import { Metadata } from "next"
 
+export const metadata:Metadata ={
+    title: "Home | Portfolio",
+    description: "This is home page of Mukter Hossain portfolio website. Explore his latest blogs and projects on web development, Next.js, React, Typescript, and more.",
+}
 
 export default async function HomePage() {
   const resBlogs = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog`, {

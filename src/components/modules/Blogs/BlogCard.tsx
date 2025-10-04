@@ -33,7 +33,7 @@ export default function BlogCard({ post }: { post: any }) {
           </h3>
 
           <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
-            {post?.content}
+            {post?.content?.slice(0, 30)}
           </p>
           
 
@@ -54,9 +54,6 @@ export default function BlogCard({ post }: { post: any }) {
                 
               </span>
             </div>
-            <span className="text-gray-500 dark:text-gray-400 text-sm">
-              {post?.slug} views
-            </span>
           </div>
 
           <div className="text-right">

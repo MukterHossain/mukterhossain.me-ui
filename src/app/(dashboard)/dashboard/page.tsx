@@ -5,6 +5,7 @@ import React from 'react';
 const DashboardHome =async () => {
     const session =await getUserSession()
     console.log("Dashboard Session:", session?.user.id);
+    // https://i.ibb.co.com/k4Fy93r/Mlogo5.png
     return (
         <div className='max-w-7xl mx-auto p-5 mt-12'>
             <h1>Dashboard</h1>
