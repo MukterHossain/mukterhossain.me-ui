@@ -51,9 +51,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 --
 
-```
+
 ### ⚙️ Backend Setup (Expres + Prisma)
-bash
+```bash
 Clone the Repository
 -git clone https://github.com/MukterHossain/mukterhossain.me-api.git
 cd mukterhossain.me-api
@@ -95,9 +95,9 @@ npm install
 ```
 
 
-```
+
 ### ⚙️ Frontend Setup (Next.js)
-bash
+```bash
 Clone the Repository
 * git clone https://github.com/MukterHossain/mukterhossain.me-ui.git
 
