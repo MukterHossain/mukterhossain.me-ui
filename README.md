@@ -101,15 +101,20 @@ npm install
 Clone the Repository
 * git clone https://github.com/MukterHossain/mukterhossain.me-ui.git
 
+```
 # Navigate to backend folter
 cd mukterhossain.me-ui
-
+```
+```
 # Install Dependencies
+```
+bash
 npm install
+```
 
 * Create a .env.local file:
+```
 NEXT_PUBLIC_BASE_API=http://localhost:5000/api/v1
-
 AUTH_SECRET=secret
 ```
 
