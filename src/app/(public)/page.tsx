@@ -29,8 +29,9 @@ export default async function HomePage() {
   return (
     <div className="max-w-7xl mx-auto p-5">
       <Hero></Hero>
-      <div className="my-16 ">
-        <h2 className="text-3xl font-bold text-center mb-6">Latest Blogs</h2>
+      <div className="my-16">
+        <h2 className="text-3xl font-bold text-center mb-4">Latest Blogs</h2>
+        <p className="text-center  max-w-xl mx-auto">Check out the latest blogs on web development, Next.js, React, Typescript, and more. Learn how to build modern web applications with these technologies. </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 mt-10 md:grid-cols-3 gap-5 ">
 
           {
@@ -41,7 +42,8 @@ export default async function HomePage() {
         </div>
       </div>
       <div className="my-16 ">
-        <h2 className="text-3xl font-bold text-center mb-6">Latest Projects</h2>
+        <h2 className="text-3xl font-bold text-center mb-4">Latest Projects</h2>
+        <p className="text-center  max-w-xl mx-auto">Explore my latest projects showcasing my skills in web development, React, Next.js, and more. Each project highlights my ability to create dynamic and responsive web applications.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 mt-10 md:grid-cols-3 gap-5 ">
 
           {

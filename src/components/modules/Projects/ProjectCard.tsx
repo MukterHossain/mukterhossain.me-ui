@@ -32,10 +32,9 @@ const ProjectCard = ({project}:{project:IProject}) => {
           <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">
             {project?.title} 
           </h3>
-
-          <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
-            {project?.description?.slice(0, 50)}
-          </p>
+          <div className="flex item-center mb-4">
+            <div dangerouslySetInnerHTML={{ __html: project?.description?.slice(0, 50) || ""} }/> <span>...</span>
+          </div>
           
 
           <div className="flex items-center justify-between mb-4">

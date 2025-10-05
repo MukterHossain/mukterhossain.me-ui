@@ -4,13 +4,14 @@ import { getUserSession } from "@/helpers/getUserSession"
 import { revalidatePath, revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
 
-export const createBlog = async(data:FormData) =>{
+export const createBlog = async(data:FormData, published:boolean) =>{
     const session =await getUserSession()
     const blogInfo = Object.fromEntries(data.entries())
     console.log("blogInfo", blogInfo)
     const modifiedData = {
         ...blogInfo,
         ownerId: session?.user?.id,
+        published
     }
     console.log("modifiedData", modifiedData)
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog`,{
@@ -21,16 +22,18 @@ export const createBlog = async(data:FormData) =>{
         body: JSON.stringify(modifiedData)
     })
     console.log("modifiedData", modifiedData)
+    
     const result = await res.json()
     console.log("result", result)
     if(result?.data?.id){
         revalidateTag('BLOGS')
         revalidatePath('/blogs')
-        redirect('/dashboard/manage-blog')
+        // redirect('/dashboard/manage-blog')
+        return {success:true}
     }
     return result
 }
-export const updateBlog = async(data:FormData) =>{
+export const updateBlog = async(data:FormData, published:boolean) =>{
     const session =await getUserSession()
     const blogInfo = Object.fromEntries(data.entries())
     const {id, ...rest} = blogInfo
@@ -38,6 +41,8 @@ export const updateBlog = async(data:FormData) =>{
     const modifiedData = {
         ...cleanData,
         ownerId: session?.user?.id,
+        published
+
     }
     console.log("modifiedData", modifiedData)
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog/${id}`,{
@@ -54,10 +59,12 @@ export const updateBlog = async(data:FormData) =>{
     if(result?.data?.id){
         revalidateTag('BLOGS')
         revalidatePath('/blogs')
-        redirect('/dashboard/manage-blog')
+        // redirect('/dashboard/manage-blog')
+        return {success:true}
     }
     return result
 }
+
 export const deleteBlog = async(formData:FormData) =>{
     const id = formData.get("id")
     if(!id){
@@ -96,7 +103,7 @@ export const createProject = async(data:FormData) =>{
     if(result?.data?.id){
         revalidateTag('PROJECTS')
         revalidatePath('/projects')
-        redirect('/dashboard/manage-project')
+        // redirect('/dashboard/manage-project')
     }
     return result
 }
@@ -125,7 +132,7 @@ export const updateProject = async(data:FormData) =>{
     if(result?.data?.id){
         revalidateTag('PROJECTS')
         revalidatePath('/projects')
-        redirect('/dashboard/manage-project')
+        // redirect('/dashboard/manage-project')
     }
     return result
 }

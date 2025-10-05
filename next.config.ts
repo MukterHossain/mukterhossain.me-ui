@@ -8,7 +8,8 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: '**'
       }
-    ]
+    ],
+     domains: ['i.ibb.co']
   }
 };
 

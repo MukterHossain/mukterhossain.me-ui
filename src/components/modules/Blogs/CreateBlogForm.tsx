@@ -4,11 +4,13 @@ import { createBlog } from "@/actions/create";
 import RichTextEditor from "@/components/Editor/RichTextEditor";
 import Form from "next/form";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 
 
 export default function CreateBlogForm() {
   const [content,setContent] = useState("")
+  const [published, setPublished] = useState(false)
   // action={async(formData:FormData) =>{
   //       formData.append("content", content);
   //      await createBlog(formData)}}
@@ -17,8 +19,25 @@ export default function CreateBlogForm() {
   return (
     <Form
       action={async(formData:FormData) =>{
-        formData.append("content", content);
-       await createBlog(formData)}}
+        try {
+          if(!content || content.trim() === ""){
+            toast.error("Content is required")
+            return
+          }
+          formData.append("content", content);
+          formData.append("published", String(published));
+      const res = await createBlog(formData, published)
+      if(res?.success){
+        toast.success("✅ Blog created successfully!")
+        window.location.href = "/dashboard/manage-blog"
+      }else{
+        toast.error("❌ Failed to create blog")
+      }
+        } catch (error) {
+          toast.error("❌ Failed to create blog. Please try again.")
+          console.error(error)
+        }
+        }}
       className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg space-y-4 w-full"
     >
       <h2 className="text-xl font-semibold mb-4">Create Blog</h2>
@@ -32,6 +51,7 @@ export default function CreateBlogForm() {
           type="text"
           id="title"
           name="title"
+          required
           className="w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200"
         />
       </div>
@@ -45,6 +65,8 @@ export default function CreateBlogForm() {
         type="text"
           id="slug"
           name="slug"
+          required
+    
           className="w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200"
         />
       </div>
@@ -79,13 +101,7 @@ export default function CreateBlogForm() {
         <label className="block text-sm font-medium mb-1" htmlFor="content">
           Content
         </label>
-        <RichTextEditor value={content}
-            onChange={setContent}          
-//  id="content"
-          // name="content"
-          // rows={4}
-          // className="w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200"
-        />
+        <RichTextEditor value={content} onChange={setContent}/>
       </div>
       {/* <div>
         <label className="block text-sm font-medium mb-1" htmlFor="content">
@@ -98,6 +114,19 @@ export default function CreateBlogForm() {
           className="w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200"
         />
       </div> */}
+      <div className="flex items-center gap-2">       
+        <input
+          type="checkbox"
+          id="published"
+          name="published"
+          checked={published}
+          onChange={(e) => setPublished(e.target.checked)}
+          className="w-4 h-4 rounded-md border  focus:ring focus:ring-blue-200"
+        /> 
+        <label className="text-sm font-medium" htmlFor="published">
+          Published Blog
+        </label>
+      </div>
 
       <button
         type="submit"

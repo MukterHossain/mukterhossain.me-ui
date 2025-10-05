@@ -63,8 +63,7 @@ cd mukterhossain.me-api
 bash
 npm install
 ```
-```
-```
+
 * Create a **.env** file:
 ```
 PORT="5000"
@@ -74,6 +73,7 @@ DATABASE_URL="postgresql://username:password@localhost:5432/DBName?schema=public
 
 # BCRYPT
 BCRYPT_SALT_ROUND=10
+
 # OWNER
 OWNER_EMAIL=your_email@example.com
 OWNER_PASSWORD=userPassword
@@ -84,7 +84,7 @@ OWNER_IMAGE=userImage
 JWT_ACCESS_SECRET=secret
 JWT_ACCESS_EXPIRE=date
 ```
-* Run Prisma migrations and seed admin user:
+* Run Prisma migrations and seed Admin/Owner user:
 ```
 bash
 npx prisma migrate dev
@@ -124,8 +124,9 @@ npm install
 NEXT_PUBLIC_BASE_API=http://localhost:5000/api/v1
 AUTH_SECRET=secret
 ```
+- The backend will run at: http://localhost:3000
 
-
+### Required Command
 | Command             | Description                  |
 | ------------------- | ---------------------------- |
 | `npm run dev`       | Start development server     |

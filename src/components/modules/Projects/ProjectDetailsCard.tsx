@@ -1,15 +1,13 @@
 import { IProject } from "@/types";
 import { ExternalLink } from "lucide-react";
-import dynamic from "next/dynamic";
+
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa";
-const projectCard = dynamic(() => import("@/components/modules/Projects/ProjectCard"),{
-    loading: () => <p>Loading...</p>,
-})
+
 
 const ProjectDetailsCard = ({ project }: { project: IProject }) => {
     return (
-        <div className="bg-white max-w-5xl mx-auto dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 mt-12">
+        <main className="bg-white max-w-5xl mx-auto dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 mt-12">
             {project?.thumbnail ? (
                 <div className="relative h-56 sm:h-70 md:h-80 w-full overflow-hidden">
                     <Image
@@ -34,13 +32,13 @@ const ProjectDetailsCard = ({ project }: { project: IProject }) => {
                     {project?.title}
                 </h3>
 
-                <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
-                    {project?.description}
-                </p>
+                 <div className=" mb-4">
+            <div dangerouslySetInnerHTML={{ __html: project?.description ? project?.description : "No Description found"} }/>
+          </div>
                 <div className=" gap-4 my-4">
                     <h1 className="font-bold text-lg">Features:</h1>
                     <ul className="list-disc ml-5 list-inside space-y-1 text-gray-700 dark:text-gray-300">
-                        {project?.features?.map((fea, i) =>(
+                        {project?.features?.map((fea, i) => (
                             <li key={i}>{fea}</li>
                         ))}
                     </ul>
@@ -77,7 +75,7 @@ const ProjectDetailsCard = ({ project }: { project: IProject }) => {
 
                 </div>
             </div>
-        </div>
+        </main>
     );
 };
 

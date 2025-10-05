@@ -2,13 +2,14 @@ import Link from "next/link";
 
 export default async function Hero() {
   return (
-    <div className="mt-10 ">
+    <main className="mt-10 ">
       <div className=" ">
         <div
           className="relative inset-0 z-0 rounded-b-2xl flex items-center justify-center"
           style={{
             backgroundImage: "url('https://i.ibb.co.com/27wny5G/bnner17.png')",
             backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
           }}
         >
@@ -42,6 +43,6 @@ export default async function Hero() {
         </div>
 
       </div>
-    </div>
+    </main>
   );
 }

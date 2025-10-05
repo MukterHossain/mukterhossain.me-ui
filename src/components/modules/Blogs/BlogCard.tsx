@@ -29,12 +29,11 @@ export default function BlogCard({ post }: { post: any }) {
 
         <div className="p-6">
           <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">
-            {post?.title} 
+            {post?.title?.slice(0, 20)}{post?.title?.length > 20 ? "..." : ""}
           </h3>
-
-          <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
-            {post?.content?.slice(0, 30)}
-          </p>
+          <div className="flex item-center mb-4">
+            <div dangerouslySetInnerHTML={{ __html: post?.content?.slice(0, 30)}}/> <span>...</span>
+          </div>
           
 
           <div className="flex items-center justify-between mb-4">

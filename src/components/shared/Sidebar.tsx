@@ -3,13 +3,28 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Home, PlusCircle, LogOut, LayoutDashboard, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { signOut, useSession } from "next-auth/react";
 import clsx from "clsx";
+
+import Loading from "../ui/Loading";
+import { useRouter } from "next/navigation";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false)
   const session = useSession()
+  const router = useRouter()
+
+
+  useEffect(() => {
+    if(session.status === "unauthenticated"){
+      router.push("/login")
+    }
+  },[session.status, router])
+
+  if(session.status === "loading"){
+    return <Loading></Loading>
+  }
   console.log(session)
   return (
     <>

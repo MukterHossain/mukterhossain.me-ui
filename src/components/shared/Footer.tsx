@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
@@ -15,14 +16,23 @@ export default function Footer() {
       />
 
       {/* Content Layer */}
-      <div className="relative z-10 container mx-auto px-6 sm:px-8 md:px-12 lg:px-20 xl:px-28 text-white">
+      <div className="relative z-10  mx-auto px-6 sm:px-8 md:px-12 lg:px-20 xl:px-28 text-white">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
           {/* Left */}
-          <div>
-            <h2 className="text-white text-xl font-semibold mb-1">
-              MD MUKTER HOSSAIN
-            </h2>
-            <p className="text-sm text-gray-400">Web Developer</p>
+          <div className="flex items-center gap-2">
+            <Image
+              src={"https://i.ibb.co.com/3zj13YK/Mukter-Hossain1.jpg"}
+              alt={`MUKTER`}
+              width={36}
+              height={36}
+              className="rounded-full border-2 border-gray-200 dark:border-gray-700"
+            />
+            <div className="flex flex-col">
+              <p className="text-white text-lg font-semibold ">
+                Md Mukter Hossain
+              </p>
+              <p className="text-sm text-start text-gray-300">Web Developer</p>
+            </div>
           </div>
 
           {/* Center Nav */}
@@ -42,11 +52,11 @@ export default function Footer() {
             >
               Projects
             </Link>
-          </div>          
+          </div>
         </div>
         <div className="text-sm text-gray-400 text-center mt-5">
-            © {currentYear} next level team. All rights reserved.
-          </div>
+          © {currentYear}  <strong>Md Mukter Hossain</strong>. All rights reserved.
+        </div>
       </div>
     </footer>
   );

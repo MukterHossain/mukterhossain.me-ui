@@ -12,7 +12,7 @@ export default async function BlogDetailsCard({ blog }: { blog: IBlog }) {
   }
 
   return (
-    <div className="bg-white max-w-5xl mx-auto dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 mt-12">
+    <main className="bg-white max-w-5xl mx-auto dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 mt-12">
       {blog?.thumbnail ? (
         <div className="relative h-56 sm:h-70 md:h-80 w-full overflow-hidden">
           <Image
@@ -79,6 +79,6 @@ export default async function BlogDetailsCard({ blog }: { blog: IBlog }) {
 
         </div>
       </div>
-    </div>
+    </main>
   );
 }

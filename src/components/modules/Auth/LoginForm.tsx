@@ -14,10 +14,17 @@ import {
 } from "@/components/ui/form";
 import toast from "react-hot-toast";
 import { signIn } from "next-auth/react";
+import {z} from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
 
+const loginSchema = z.object({
+  email:z.email("Invalid email address"),
+  password:z.string().min(8,"Password must be at least 8 characters")
+})
 
 export default function LoginForm() {
-  const form = useForm<FieldValues>({
+  const form = useForm({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
       password: "",
@@ -31,11 +38,12 @@ export default function LoginForm() {
 
       const res =await signIn("credentials", {
         ...values, 
-        redirect: true,
+        redirect:false,
         callbackUrl:"/dashboard"
       });
       if(res?.ok){
         toast.success("User Logged in Successfully");
+        window.location.href = "/dashboard"
       }else{
         toast.error("Invalid eamil or password")
       }
