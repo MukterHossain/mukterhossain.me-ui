@@ -52,7 +52,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 --
 
 ### ⚙️ Backend Setup (Expres + Prisma)
-```bash
+bash
 Clone the Repository
 -git clone https://github.com/MukterHossain/mukterhossain.me-api.git
 cd mukterhossain.me-api
@@ -79,22 +79,19 @@ OWNER_IMAGE=userImage
 JWT_ACCESS_SECRET=secret
 JWT_ACCESS_EXPIRE=date
 
-```
-
-```
 * Run Prisma migrations and seed admin user:
 bash
 npx prisma migrate dev
 npx prisma db seed
 
-```
+
 * Start the backend:
-```
+
 # Install Dependencies
 npm install
 
   The backend will run at: http://localhost:5000
-```
+
 
 
 
@@ -113,7 +110,7 @@ npm install
 NEXT_PUBLIC_BASE_API=http://localhost:5000/api/v1
 
 AUTH_SECRET=secret
-```
+
 
 
 | Command             | Description                  |
