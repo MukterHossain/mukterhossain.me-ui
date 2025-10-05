@@ -51,6 +51,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 --
 
+```
 ### ⚙️ Backend Setup (Expres + Prisma)
 bash
 Clone the Repository
@@ -91,10 +92,10 @@ npx prisma db seed
 npm install
 
   The backend will run at: http://localhost:5000
+```
 
 
-
-
+```
 ### ⚙️ Frontend Setup (Next.js)
 bash
 Clone the Repository
@@ -110,7 +111,7 @@ npm install
 NEXT_PUBLIC_BASE_API=http://localhost:5000/api/v1
 
 AUTH_SECRET=secret
-
+```
 
 
 | Command             | Description                  |
