@@ -52,17 +52,19 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 --
 
 
-### ⚙️ Backend Setup (Expres + Prisma)
+## ⚙️ Backend Setup (Expres + Prisma)
 ```bash
 Clone the Repository
 -git clone https://github.com/MukterHossain/mukterhossain.me-api.git
 cd mukterhossain.me-api
-
+```
 # Install Dependencies
+bash
 npm install
-
+```
+```
 * Create a **.env** file:
-
+```
 PORT="5000"
 NODE_ENV="development"
 
@@ -79,32 +81,35 @@ OWNER_IMAGE=userImage
 # Jwt
 JWT_ACCESS_SECRET=secret
 JWT_ACCESS_EXPIRE=date
-
+```
 * Run Prisma migrations and seed admin user:
+```
 bash
 npx prisma migrate dev
 npx prisma db seed
-
-
-* Start the backend:
-
-# Install Dependencies
-npm install
-
-  The backend will run at: http://localhost:5000
 ```
 
+### Start the backend:
+* Install Dependencies:
+``` 
+bash
+npm install
+```
+- The backend will run at: http://localhost:5000
 
 
-### ⚙️ Frontend Setup (Next.js)
+
+
+## ⚙️ Frontend Setup (Next.js)
+* Clone the Repository
 ```bash
-Clone the Repository
-* git clone https://github.com/MukterHossain/mukterhossain.me-ui.git
+
+git clone https://github.com/MukterHossain/mukterhossain.me-ui.git
 
 ```
 # Navigate to backend folter
-cd mukterhossain.me-ui
 ```
+cd mukterhossain.me-ui
 ```
 # Install Dependencies
 ```
@@ -112,7 +117,7 @@ bash
 npm install
 ```
 
-* Create a .env.local file:
+* Create a **.env.local** file:
 ```
 NEXT_PUBLIC_BASE_API=http://localhost:5000/api/v1
 AUTH_SECRET=secret
