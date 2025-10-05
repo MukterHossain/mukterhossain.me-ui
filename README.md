@@ -58,9 +58,11 @@ Clone the Repository
 -git clone https://github.com/MukterHossain/mukterhossain.me-api.git
 cd mukterhossain.me-api
 ```
-# Install Dependencies
+* Install Dependencies
+```
 bash
 npm install
+```
 ```
 ```
 * Create a **.env** file:
@@ -89,7 +91,7 @@ npx prisma migrate dev
 npx prisma db seed
 ```
 
-### Start the backend:
+
 * Install Dependencies:
 ``` 
 bash
@@ -107,11 +109,11 @@ npm install
 git clone https://github.com/MukterHossain/mukterhossain.me-ui.git
 
 ```
-# Navigate to backend folter
+* Navigate to backend folter
 ```
 cd mukterhossain.me-ui
 ```
-# Install Dependencies
+* Install Dependencies
 ```
 bash
 npm install
