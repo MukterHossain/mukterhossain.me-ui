@@ -1,14 +1,14 @@
 'use client'
 import { IDashboardData } from "@/types";
-import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, CartesianGrid, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 const Analytics = ({dashboardData}:{dashboardData:IDashboardData}) => {
    
     console.log("id", dashboardData);
     const chartData =[
         {name: "Total Blogs", value: dashboardData?.stats?.totalBlogs},
-        {name: "Total Projects", value: dashboardData?.stats?.totalProjects},
-        {name: "Published Blogs", value: dashboardData?.stats?.publishedBlogs},
+        {name: "Total Projects", value: dashboardData?.stats?.totalProjects },
+        {name: "Published Blogs", value: dashboardData?.stats?.publishedBlogs },
     ]
    
     return (
@@ -36,7 +36,11 @@ const Analytics = ({dashboardData}:{dashboardData:IDashboardData}) => {
                         <XAxis dataKey="name" />
                         <YAxis allowDecimals={false} />
                         <Tooltip/>
-                        <Bar dataKey="value" fill="#1d4ed8" radius={[4, 4, 0, 0]}/>
+                        <Bar dataKey="value"  radius={[4, 4, 0, 0]}>
+                            <Cell fill="#05a83b"></Cell>
+                            <Cell fill="#1d4ed8"></Cell>
+                            <Cell fill="##1184e2"></Cell>
+                        </Bar>
                     </BarChart>
                 </ResponsiveContainer>
             </div>
