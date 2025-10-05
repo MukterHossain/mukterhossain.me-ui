@@ -34,3 +34,15 @@ export interface IProjectOwner {
  
 }
 
+export interface IStats{
+    totalBlogs: number;
+    publishedBlogs: number;
+    totalProjects: number;
+}
+
+export interface IDashboardData{
+    stats: IStats;
+    recentBlogs: IBlog[];
+    recentProjects: IProject[];
+}
+

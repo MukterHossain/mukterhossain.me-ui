@@ -1,30 +1,44 @@
+'use client'
+import { IDashboardData } from "@/types";
+import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
-
-const Analytics = async () => {
-    const resBlog = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog`)
-    const dataBlog = await resBlog.json()
-    const blogs = dataBlog?.result?.blogs
-
-    const resProject = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project`)
-    const dataProject = await resProject.json()
-    console.log("data", dataProject.data.projects)
-    const projects = dataProject.data.projects
-    console.log("blogs", blogs)
+const Analytics = ({dashboardData}:{dashboardData:IDashboardData}) => {
+   
+    console.log("id", dashboardData);
+    const chartData =[
+        {name: "Total Blogs", value: dashboardData?.stats?.totalBlogs},
+        {name: "Total Projects", value: dashboardData?.stats?.totalProjects},
+        {name: "Published Blogs", value: dashboardData?.stats?.publishedBlogs},
+    ]
+   
     return (
-        <div className="">
-            <div className="flex justify-center  items-center gap-10 sm:gap-20">
-                <div className="bg-gray-50 p-6 sm:p-12 md:16 border border-gray-200 shadow-md rounded-xl hover:bg-blue-200 transform hover:scale-105 hover:-translate-y-1 transition-transform duration-300">
-                    <div className="w-full text-center">
-                        <h1 className="text-3xl sm:text-5xl md:text-7xl  font-bold">{blogs?.length}</h1>
-                        <p className="text-gray-500 text-centr mt-2">Total Blogs</p>
-                    </div>
+        <div className="my-10">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+                <div className="bg-blue-100 dark:bg-blue-900 p-4 rounded-2xl shadow text-center">
+                    <p className="text-2xl sm:text-4xl font-bold">{dashboardData?.stats?.totalBlogs}</p>
+                    <h2 className="text-lg font-medium">Total Blogs</h2>
                 </div>
-                <div className="bg-gray-50 p-6 sm:p-12 md:16 border border-gray-200 shadow-md rounded-xl hover:bg-blue-200 transform hover:scale-105 hover:-translate-y-1 transition-transform duration-300">
-                    <div className="text-center">
-                        <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold">{projects?.length}</h1>
-                        <p className="text-gray-500 mt-2">Total Projects</p>
-                    </div>
+                <div className="bg-blue-100 dark:bg-blue-900 p-4 rounded-2xl shadow text-center">
+                    <p className="text-2xl sm:text-4xl font-bold">{dashboardData?.stats?.totalProjects}</p>
+                    <h2 className="text-lg font-medium">Total Projects</h2>
                 </div>
+                <div className="bg-blue-100 dark:bg-blue-900 p-4 rounded-2xl shadow text-center">
+                    <p className="text-2xl sm:text-4xl font-bold">{dashboardData?.stats?.publishedBlogs}</p>
+                    <h2 className="text-lg font-medium">Published Blogs</h2>
+                </div>
+            </div>
+            {/* bar chart */}
+            <div className="bg-white p-6 rounded-2xl shadow">
+                <h2 className="text-2xl font-semibold mb-4">Activity Overview</h2>
+                <ResponsiveContainer    width="100%" height={300}>
+                    <BarChart data={chartData}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis allowDecimals={false} />
+                        <Tooltip/>
+                        <Bar dataKey="value" fill="#1d4ed8" radius={[4, 4, 0, 0]}/>
+                    </BarChart>
+                </ResponsiveContainer>
             </div>
         </div>
     );
