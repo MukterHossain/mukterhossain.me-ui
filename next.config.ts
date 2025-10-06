@@ -6,10 +6,9 @@ const nextConfig: NextConfig = {
     remotePatterns:[
       {
         protocol: 'https',
-        hostname: '**'
+        hostname: "**",
       }
-    ],
-     domains: ['i.ibb.co']
+    ]
   }
 };
 

@@ -7,7 +7,7 @@ const ProjectCard = ({project}:{project:IProject}) => {
     return (
         <Link
       href={`/projects/${project?.id}`}
-      className="block group transform hover:-translate-y-1 transition-transform duration-300"
+      className="block group h-full transform hover:-translate-y-1 transition-transform duration-300"
     >
       <div className="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
         {project?.thumbnail ? (
@@ -33,7 +33,7 @@ const ProjectCard = ({project}:{project:IProject}) => {
             {project?.title} 
           </h3>
           <div className="flex item-center mb-4">
-            <div dangerouslySetInnerHTML={{ __html: project?.description?.slice(0, 50) || ""} }/> <span>...</span>
+            <div dangerouslySetInnerHTML={{ __html: project?.description?.slice(0, 40) || ""} }/> <span>...</span>
           </div>
           
 

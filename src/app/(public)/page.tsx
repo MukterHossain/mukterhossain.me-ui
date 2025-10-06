@@ -32,7 +32,7 @@ export default async function HomePage() {
       <div className="my-16">
         <h2 className="text-3xl font-bold text-center mb-4">Latest Blogs</h2>
         <p className="text-center  max-w-xl mx-auto">Check out the latest blogs on web development, Next.js, React, Typescript, and more. Learn how to build modern web applications with these technologies. </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 mt-10 md:grid-cols-3 gap-5 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 mt-10 md:grid-cols-3 gap-5 items-stretch">
 
           {
             blogs?.slice(0, 3)?.map((blog: IBlog) => (
@@ -44,7 +44,7 @@ export default async function HomePage() {
       <div className="my-16 ">
         <h2 className="text-3xl font-bold text-center mb-4">Latest Projects</h2>
         <p className="text-center  max-w-xl mx-auto">Explore my latest projects showcasing my skills in web development, React, Next.js, and more. Each project highlights my ability to create dynamic and responsive web applications.</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 mt-10 md:grid-cols-3 gap-5 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 mt-10 md:grid-cols-3 gap-5 items-stretch">
 
           {
             projects?.slice(0, 3)?.map((project: IProject) => (

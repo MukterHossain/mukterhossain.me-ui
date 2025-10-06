@@ -22,7 +22,7 @@ const blogs = data?.result?.blogs
     return (
         <div className="max-w-7xl mx-auto p-5 my-16 ">
            <h2 className="text-3xl font-bold text-center mb-6">All Blogs</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 mt-10 md:grid-cols-3 gap-5 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 mt-10 md:grid-cols-3 gap-5 items-stretch">
  {
                 blogs?.map((blog:IBlog) => (
                     <BlogCard key={blog?.id} post={blog}></BlogCard>
