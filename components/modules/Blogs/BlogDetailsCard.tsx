@@ -13,7 +13,7 @@ export default async function BlogDetailsCard({ blog }: { blog: IBlog }) {
   return (
     <main className="bg-white max-w-5xl mx-auto dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 mt-12">
       {blog?.thumbnail ? (
-        <div className="relative h-56 sm:h-70 md:h-80 w-full overflow-hidden">
+        <div className="relative h-56 sm:h-70 md:h-80 lg:h-90 w-full overflow-hidden">
           <Image
             src={blog?.thumbnail}
 
@@ -21,7 +21,7 @@ export default async function BlogDetailsCard({ blog }: { blog: IBlog }) {
             fill
             sizes="full"
             priority={false}
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            className="object-cover  group-hover:scale-105 transition-transform duration-300"
           />
         </div>
       ) : (

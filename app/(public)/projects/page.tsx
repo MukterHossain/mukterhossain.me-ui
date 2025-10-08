@@ -1,5 +1,4 @@
 import ProjectCard from '@/components/modules/Projects/ProjectCard';
-import Loading from '@/components/ui/Loading';
 import { IProject } from '@/types';
 import { Metadata } from 'next';
 
@@ -19,20 +18,17 @@ const ProjectsPage = async () => {
     const data = await res.json()
     const projects = data?.data?.projects || []
 
+     if(projects?.length === 0){
+        return <p className="text-center text-xl py-10 mt-10">Projects are not available</p>
+    }
+
     return (
         <div className='max-w-7xl mx-auto p-5 my-16'>
             <h2 className="text-3xl font-bold text-center mb-6">All Projects</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 mt-10 md:grid-cols-3 gap-5 ">
-                {projects?.length > 0 ? (
-                    projects?.map((project: IProject) => (
+                { projects?.map((project: IProject) => (
                         <ProjectCard key={project?.id} project={project}></ProjectCard>
                     ))
-                ) :
-                    (
-                        <p className="text-center text-2xl py-10">No Projects available</p>
-                    )}
-                {
-
                 }
             </div>
         </div>

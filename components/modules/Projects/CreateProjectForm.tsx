@@ -63,7 +63,7 @@ const isValidUrl = (url:string) =>{
          
           const res = await createProject(formData)
           if(res?.success){
-            toast.success("✅ Project created successfully!")
+            toast.success("Project created successfully!")
             window.location.href = "/dashboard/manage-project"
           }else{
             toast.error(" Failed to create project")
@@ -76,7 +76,7 @@ const isValidUrl = (url:string) =>{
         }}
       className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg space-y-4 w-full"
     >
-      <h2 className="text-xl font-semibold mb-4">Create Project</h2>
+      <h2 className="text-xl font-semibold mb-4">Add Project</h2>
 
       {/* Title */}
       <div>
@@ -154,13 +154,10 @@ const isValidUrl = (url:string) =>{
         <label className="block text-sm font-medium mb-1" htmlFor="content">
           Description
         </label>
+        <div className="w-full h-full">
         <RichTextEditor value={description} onChange={setDescription}/>
-        {/* <textarea
-          id="description"
-          name="description"
-          rows={4}
-          className="w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200"
-        /> */}
+        </div>
+        
       </div>
 
       <button

@@ -23,6 +23,9 @@ export default async function ProjectTable() {
 
     
 const projects = data?.data?.projects
+  if(projects?.length === 0){
+        return <p className="text-center text-xl py-10 mt-10">Projects data are not available</p>
+    }
   return (
     <main className="max-w-7xl mx-auto p-5 bg-white shadow-md rounded-lg  w-full overflow-x-hidden">
       <Table className="w-full table-auto overflow-x-hidden">

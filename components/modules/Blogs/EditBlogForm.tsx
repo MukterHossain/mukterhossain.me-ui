@@ -34,7 +34,7 @@ const EditBlogForm = ({ blog }: { blog: IBlog }) => {
           formData.append("published", String(published));
           const res = await updateBlog(formData, published)
           if (res?.success) {
-            toast.success("✅ Blog updated successfully!")
+            toast.success("Blog updated successfully!")
             window.location.href = "/dashboard/manage-blog"
           } else {
             toast.error("Failed to update blog")
@@ -115,14 +115,9 @@ const EditBlogForm = ({ blog }: { blog: IBlog }) => {
         <label className="block text-sm font-medium mb-1" htmlFor="content">
           Content
         </label>
-        <RichTextEditor value={content} onChange={setContent} />
-        {/* <textarea
-          id="content"
-          defaultValue={blog?.content}
-          name="content"
-          rows={4}
-          className="w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200"
-        /> */}
+        <div className="w-full h-full">
+          <RichTextEditor  value={content} onChange={setContent}/>
+        </div>
       </div>
       <div className="flex items-center gap-2">
         <input

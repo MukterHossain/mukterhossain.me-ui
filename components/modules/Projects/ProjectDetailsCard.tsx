@@ -7,9 +7,9 @@ import { FaGithub } from "react-icons/fa";
 
 const ProjectDetailsCard = ({ project }: { project: IProject }) => {
     return (
-        <main className="bg-white max-w-5xl mx-auto dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 mt-12">
+        <main className="bg-white max-w-5xl  mx-auto dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 mt-12">
             {project?.thumbnail ? (
-                <div className="relative h-56 sm:h-70 md:h-80 w-full overflow-hidden">
+                <div className="relative h-56 sm:h-70 md:h-80 lg:h-90 w-full overflow-hidden">
                     <Image
                         src={project?.thumbnail}
 

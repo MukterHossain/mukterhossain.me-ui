@@ -11,9 +11,6 @@ import toast from "react-hot-toast";
 export default function CreateBlogForm() {
   const [content,setContent] = useState("")
   const [published, setPublished] = useState(false)
-  // action={async(formData:FormData) =>{
-  //       formData.append("content", content);
-  //      await createBlog(formData)}}
 
 
   return (
@@ -28,19 +25,19 @@ export default function CreateBlogForm() {
           formData.append("published", String(published));
       const res = await createBlog(formData, published)
       if(res?.success){
-        toast.success("✅ Blog created successfully!")
+        toast.success(" Blog created successfully!")
         window.location.href = "/dashboard/manage-blog"
       }else{
-        toast.error("❌ Failed to create blog")
+        toast.error(" Failed to create blog")
       }
         } catch (error) {
-          toast.error("❌ Failed to create blog. Please try again.")
+          toast.error(" Failed to create blog. Please try again.")
           console.error(error)
         }
         }}
       className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg space-y-4 w-full"
     >
-      <h2 className="text-xl font-semibold mb-4">Create Blog</h2>
+      <h2 className="text-xl font-semibold mb-4">Add Blog</h2>
 
       {/* Title */}
       <div>
@@ -97,23 +94,15 @@ export default function CreateBlogForm() {
         />
       </div>
         {/* Content */}
-      <div>
+      <div className="">
         <label className="block text-sm font-medium mb-1" htmlFor="content">
           Content
         </label>
-        <RichTextEditor value={content} onChange={setContent}/>
+        <div className="w-full h-full">
+          <RichTextEditor  value={content} onChange={setContent}/>
+        </div>
+        
       </div>
-      {/* <div>
-        <label className="block text-sm font-medium mb-1" htmlFor="content">
-          Content
-        </label>
-        <textarea
-          id="content"
-          name="content"
-          rows={4}
-          className="w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200"
-        />
-      </div> */}
       <div className="flex items-center gap-2">       
         <input
           type="checkbox"

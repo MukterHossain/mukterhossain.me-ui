@@ -51,13 +51,14 @@ export default function LoginForm() {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-50">
-      <div className="space-y-6 w-full max-w-md bg-white p-8 rounded-lg shadow-md">
+      <div className="space-y-6 w-full max-w-md bg-gradient-to-l from-sky-50 to-green-50 p-8 rounded-lg shadow-md hover:bg-gradient-to-r hover:from-sky-100 hover:to-green-100 transition-shadow duration-300 ease-in-out">
+         <h2 className="text-3xl font-bold text-center mb-4">Login Only Owner</h2>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
             className="space-y-6 w-full max-w-md"
           >
-            <h2 className="text-3xl font-bold text-center">Login Only for Owner</h2>
+
 
             {/* Email */}
             <FormField

@@ -23,6 +23,10 @@ export default async function BlogTable() {
 
   const blogs = data?.result?.blogs
 
+    if(blogs?.length === 0){
+        return <p className="text-center text-xl py-10 mt-10">Blogs data are not available</p>
+    }
+
   return (
     <main className="max-w-7xl mx-auto p-6 bg-white shadow-md rounded-lg  w-full overflow-x-hidden">
       <Table className="w-full table-auto overflow-x-hidden">

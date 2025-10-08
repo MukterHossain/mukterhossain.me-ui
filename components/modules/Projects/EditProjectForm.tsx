@@ -9,22 +9,21 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 
 
-export default function EditProjectForm({project}: {project:IProject}) {
-const [description, setDescription] = useState(project?.description || "")
+export default function EditProjectForm({ project }: { project: IProject }) {
+  const [description, setDescription] = useState(project?.description || "")
 
-const isValidUrl = (url:string) =>{
-  try {
+  const isValidUrl = (url: string) => {
+    try {
       new URL(url);
       return true;
-  } catch {
-    return false;
+    } catch {
+      return false;
+    }
   }
-}
 
   return (
     <Form
-      // action={updateProject}
-      action={async(formData:FormData) =>{
+      action={async (formData: FormData) => {
         try {
           const id = formData.get("id")?.toString() || "";
           const title = formData.get("title")?.toString() || ""
@@ -32,63 +31,63 @@ const isValidUrl = (url:string) =>{
           const thumbnail = formData.get("thumbnail")?.toString() || ""
           const liveUrl = formData.get("liveUrl")?.toString() || ""
           const repoUrl = formData.get("repoUrl")?.toString() || ""
-         
 
-          if(!id ){
+
+          if (!id) {
             toast.error("Invalid project ID")
             return;
           }
-          if(!title || title.trim() === ""){
+          if (!title || title.trim() === "") {
             toast.error("Title is required")
             return;
           }
-          if(!features || features.trim() === ""){
+          if (!features || features.trim() === "") {
             toast.error("Features is required")
             return;
           }
 
-         
-          if(thumbnail && !isValidUrl(thumbnail) ){
+
+          if (thumbnail && !isValidUrl(thumbnail)) {
             toast.error("Thumbnail must be a valid URL")
             return;
           }
-          if(liveUrl && !isValidUrl(liveUrl) ){
+          if (liveUrl && !isValidUrl(liveUrl)) {
             toast.error("Live Url must be a valid URL")
             return;
           }
-          if(repoUrl && !isValidUrl(repoUrl) ){
+          if (repoUrl && !isValidUrl(repoUrl)) {
             toast.error("Repository Url must be a valid URL")
             return;
           }
-          if(!description || description.trim() === ""){
+          if (!description || description.trim() === "") {
             toast.error("Description is required")
             return;
           }
           formData.append("description", description);
           const featuresArray = features.split(",").map(feat => feat.trim()).filter(feat => feat !== "");
-                
-         formData.set("features", featuresArray.toString());
+
+          formData.set("features", featuresArray.toString());
           const res = await updateProject(formData)
-          if(res?.success){
-            toast.success("✅ Project created successfully!")
+          if (res?.success) {
+            toast.success("Project created successfully!")
             window.location.href = "/dashboard/manage-project"
-          }else{
+          } else {
             toast.error(" Failed to create project")
           }
         } catch (error) {
           console.error(error)
           toast.error(" Failed to create project. Please try again.")
         }
-        
-        }}
+
+      }}
       className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg space-y-4 w-full"
     >
       <input
-          type="hidden"
-          name="id"
-          value={project?.id}
-          className="w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200"
-        />
+        type="hidden"
+        name="id"
+        value={project?.id}
+        className="w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200"
+      />
       <h2 className="text-xl font-semibold mb-4">Update Project</h2>
 
       {/* Title */}
@@ -112,7 +111,7 @@ const isValidUrl = (url:string) =>{
           Features
         </label>
         <input
-        type="text"
+          type="text"
           id="features"
           defaultValue={project?.features}
           name="features"
@@ -164,19 +163,15 @@ const isValidUrl = (url:string) =>{
       </div>
 
 
-        {/* Content */}
+      {/* Content */}
       <div>
         <label className="block text-sm font-medium mb-1" htmlFor="content">
           Description
         </label>
-        <RichTextEditor value={description} onChange={setDescription}/>
-        {/* <textarea
-          id="description"
-          defaultValue={project?.description}
-          name="description"
-          rows={4}
-          className="w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200"
-        /> */}
+
+        <div className="w-full h-full">
+          <RichTextEditor value={description} onChange={setDescription} />
+        </div>
       </div>
 
       <button
